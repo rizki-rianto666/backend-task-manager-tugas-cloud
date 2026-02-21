@@ -1,12 +1,14 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const connectDB = require("../lib/db");
 const router = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
 // Register
 router.post("/register", async (req, res) => {
+  await connectDB();
   try {
     const { email, password } = req.body;
 
@@ -31,6 +33,7 @@ router.post("/register", async (req, res) => {
 
 // Login
 router.post("/login", async (req, res) => {
+  await connectDB();
   try {
     const { email, password } = req.body;
 
