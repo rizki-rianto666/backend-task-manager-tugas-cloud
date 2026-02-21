@@ -1,6 +1,7 @@
 const express = require("express");
 const Task = require("../models/Task");
 const auth = require("../middleware/auth");
+const connectDB = require("../lib/db");
 const router = express.Router();
 
 // Get all tasks for user
